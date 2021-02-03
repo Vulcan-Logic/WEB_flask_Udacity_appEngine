@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+	<link type="text/css"  rel="stylesheet" href="/static/styles.css" /> 
+  	<title>Vinnie's Wiki</title>
+    </head>
+  <body>
+  	  <table class="main">
+	  	<tr>
+	  		<td class="left"> 
+	  			<a href='/' class="main-title"> Vinnie's Wiki  </a>
+	  		</td>
+	  		<td class="right">
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  		<td class="left">
+	  		</td>
+  			<td class="right">
+  				 {% if user %}
+	 				|{{user}}|
+	 				<a href="/logout"> LOGOUT </a> 
+	 		 	{% endif %} 
+  			</td>
+		</tr>
+	</table> 
+	<div id="content">
+  		{% block content %}
+  		{% endblock %}
+  	</div>
+  </body>
+</html>

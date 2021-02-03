@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if content %}
+		<h3> {{pageName}} </h3> <hr/>
+	    {{content}}
+{% else %}
+	<div class="error">
+		{{error}}
+	</div>	
+{% endif%}
+{% endblock %}

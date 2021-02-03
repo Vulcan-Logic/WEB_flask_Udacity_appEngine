@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if pageName %}
+		 <a href="/signup?src={{pageName}}"> NEW USER SIGNUP</a> <br/>
+	{%else%}
+		 <a href="/signup"> NEW USER SIGNUP</a> <br/>
+	{% endif %}
+	
+   		<form method="post"> 
+   			<div class="login-area"></div>
+    	 		<label>User Name:    
+    				<input value="{{user}}" name="user" type="text"/> <br/>
+				</label>
+      			<label> Password :
+      	 			<input name="password" type="password" /> <br/>
+				</label> 
+			</div>
+			<div class="error"> {{error}} </div> <br/> 
+    	<input value="Submit" type="submit" />
+	    </form>
+{% endblock %}

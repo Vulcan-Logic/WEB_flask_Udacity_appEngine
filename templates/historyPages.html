@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+	<link type="text/css"  rel="stylesheet" href="/static/styles.css" /> 
+  	<title>Vinnie's Wiki</title>
+    </head>
+  <body>
+	  <table class="main">
+	  	<tr>
+	  		<td class="left"> 
+	  			<a href='/' class="main-title"> Vinnie's Wiki  </a>
+	  		</td>
+	  		<td class="right">
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  	<td class="left">
+	  	</td>
+  		<td class="right"> 
+		 		{% if user %}
+		 				{{user}}|
+		 				<a href="/logout"> LOGOUT </a>		 
+		 		{% else %}
+	    	 		<a href="/login?src=_history/{{pageName}}">Login</a>
+		 	    {%endif%}
+		 	</td>
+		</tr>
+	</table> 
+	<div id="content">
+  	{% if comment %}
+		<h3> {{comment}} </h3>
+		<hr/>
+	{% else %}
+		<div class="center"> History of {{pageName}} </div>
+		<table>
+		 			
+		<tr>
+			<th> Page </th>
+			<th> Version </th>
+			<th> Contents </th>
+		</tr>	
+			{% for blog in blogs %}
+				<tr>
+					<td> {{blog.subject}}</td>
+					<td> {{blog.version}}</td>
+					<td style="width:400px"> {{blog.content}}</td>
+					<td> <a href="/_history_dis?pageName={{blog.subject}}&version={{blog.version}}"> view</a> </td>
+					<td> <a href="/_history_edit?pageName={{blog.subject}}&version={{blog.version}}"> edit</a> </td>
+				</tr>
+			{% endfor %}
+		</table>
+		<hr/>
+    {% endif %}
+  	</div>
+  </body>
+</html>
+
+

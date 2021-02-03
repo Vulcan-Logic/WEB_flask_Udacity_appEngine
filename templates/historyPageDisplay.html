@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+	<link type="text/css"  rel="stylesheet" href="/static/styles.css" /> 
+  	<title>Vinnie's Wiki</title>
+    </head>
+  <body>
+	  <table class="main">
+	  	<tr>
+	  		<td class="left"> 
+	  			<a href='/' class="main-title"> Vinnie's Wiki  </a>
+	  		</td>
+	  		<td class="right">
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  	<td class="left">
+	  	</td>
+  		<td class="right"> 
+		 		{% if user %}
+		 			{% if pageName %}
+		 				<a href="/_history_edit?pageName={{pageName}}&version={{version}}">edit|</a>
+		 				<a href="/_history/{{pageName}}">history</a>
+		 				{{user}}|
+		 				<a href="/logout?src=_history_dis?pageName={{pageName}}&version={{version}}"> LOGOUT</a>
+		 			{%else%}
+		 				{{user}}|
+		 				<a href="/logout"> LOGOUT </a>		 
+		 			{% endif %}	  
+		 		{% else %}
+		 			{%if pageName %}
+		 				{%if pageName != 'login'%}
+		 	 				{% if pageName != 'newUser'%}
+		 	 					 <a href="/_history_edit?pageName={{pageName}}&version={{version}}">edit</a>|
+		 	 					 <a href="/_history/{{pageName}}">history</a>
+		 	 				{% endif %}	 	
+		 					<a href="/logout?src=_history_dis?pageName={{pageName}}&version={{version}}">Login</a>
+	    	 			{% endif %}
+	    	 		{%else%}
+	    	 		<a href="/login?src=/logout?src=_history_dis?pageName={{pageName}}&version={{version}}">Login</a>
+	    	 		{%endif%}	 	
+		 	    {%endif%}
+		 	</td>
+		</tr>
+	</table> 
+	<div id="content">
+	{% if content %}
+			<h3> {{pageName}} </h3> <hr/>
+		    {{content}}
+	{% else %}
+		<div class="error">
+			{{error}}
+		</div>	
+	{% endif%}
+		  		
+  	</div>
+  </body>
+</html>
+
+

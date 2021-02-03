@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if comment %}
+		<hr />
+		<h3> {{comment}} </h3>
+	{% else %}
+			<hr />
+			<div>
+				<label> 
+					Post Subject: {{blog.subject}} 
+				</label> 
+			</div>
+			<div> 
+				<label> 
+					Post Content: {{blog.content}} 
+				</label> 
+			</div>
+			<hr />
+			Queried {{timediff}} seconds ago
+	{% endif %}
+{% endblock %}
